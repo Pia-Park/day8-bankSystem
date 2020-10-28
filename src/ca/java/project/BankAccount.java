@@ -6,15 +6,15 @@ public class BankAccount {
 	//created year  
 	//created month
 	
-	private double deposit;
+	private double balance;
 	private int accNum;
 	private int year;
 	private int month;
 	
 	//constructor 
-	public BankAccount(double deposit, int year, int month) {
+	public BankAccount(double balance, int year, int month) {
 		
-		setDeposit(deposit);
+		setBalance(balance);
 		setAccNum();
 		setYear(year);
 		setMonth(month);
@@ -25,8 +25,8 @@ public class BankAccount {
 	
 	//getter 
 	
-	public double getDeposit() {
-		return deposit;
+	public double getBalance() {
+		return balance;
 	}
 	
 	public int getAccNum() {
@@ -41,16 +41,16 @@ public class BankAccount {
 		return month;
 	}
 	
-	public void setDeposit(double deposit) {
-		if(deposit > 0) {
-			this.deposit = deposit;
+	public void setBalance(double balance) {
+		if(balance > 0) {
+			this.balance = balance;
 		} else {
-			this.deposit = 0;
+			this.balance = 0;
 		}
 	}
 	
 	public void setAccNum() {
-		this.accNum = (int)(Math.random()*(10000 - 100)+1) + 100;		
+		this.accNum = (int)(Math.random()*(10000 - 1000)+1) + 1000;		
 	}
 	
 	public void setYear(int year) {
@@ -69,6 +69,32 @@ public class BankAccount {
 		}
 	}
 	
+	@Override 
+	public String toString(){
+	 return "Account Information\nAccount Number: " + accNum
+			 + "\nAccount balance: $" + balance
+			 + "\nCreated date: " + year + "/" + month;}
+	
+	
+	public void deposit(double depositAmount) {
+		if(depositAmount > 0) {
+			System.out.println("\n$" + depositAmount + " deposit to the account: " + accNum + "\n");
+			balance += depositAmount;
+		} else {
+			System.err.println("Deposit Amount should be more than Zero.");
+		}
+	}
+	
+	public void withdraw(double withdrawAmount) {
+		if(withdrawAmount <= balance && withdrawAmount > 0) {
+			System.out.println("\n$" + withdrawAmount + " withdraw from account: " + accNum + "\n");
+			balance -= withdrawAmount;
+		} else if(withdrawAmount < 0) {
+			System.err.println("Withdraw Amount should be more than Zero.");
+		} else if(withdrawAmount > balance) {
+			System.err.println("Withdraw Amount should be less than your balance.");
+		}
+	}
 
 
 }

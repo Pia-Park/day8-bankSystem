@@ -80,6 +80,13 @@ public class User {
 		this.accounts.add(account);
 	}
 	
+	@Override
+	public String toString() {
+		return "User Name: " + fName + " " + lName
+				+ "\nUser Postal Code: " + postalCode
+				+ "\nUser Phone Number: " + pNum;
+	}
+	
 	
 
 }
