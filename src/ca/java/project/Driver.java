@@ -8,7 +8,16 @@ public class Driver {
 		System.out.println("User Name: " + users.getFName() + " " + users.getLName()
 		+ "\nUser Postal Code: " + users.getPostalCode()
 		+ "\nUser Phone number: " + users.getPNum()
-		+ "\nUser Account information:\n" + users.getAccount());
+		+ "\nUser Account information:\n");
+		printAccInfo(users.getAccount());
+	}
+	
+	public static void printAccInfo(ArrayList<BankAccount> acc) {
+		for(BankAccount a : acc) {
+			System.out.println("Deposit: $" + a.getDeposit()
+			+ "\nAccount Number: " + a.getAccNum()
+			+ "\nCreated date: " + a.getYear() + "/" + a.getMonth()+"\n");
+		}
 	}
 
 	public static void main(String[] args) {
